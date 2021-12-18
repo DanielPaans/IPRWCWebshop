@@ -1,0 +1,58 @@
+@import "../shared/variables";
+
+
+.row {
+  justify-content: space-between;
+  background-color: $black;
+}
+
+h1 {
+  font-family: 'New Rocker', cursive;
+  color: $red;
+  padding: 8px 0 0 20px;
+}
+
+.navbar {
+  display: block;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  li {
+    padding: 10px;
+    color: $silver;
+  }
+
+  li:hover {
+    animation: fade-in-bar 0.2s linear;
+    cursor: pointer;
+    padding-bottom: 3px;
+    border-bottom: 5px solid $red;
+    margin-bottom: -12px;
+    color: $yellow;
+  }
+}
+
+@media #{$media-mobile} {
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar {
+    margin: 0 auto;
+  }
+}
+
+@keyframes fade-in-bar {
+  0% {
+    border-bottom-width: 0px;
+  }
+
+  100% {
+    border-bottom-width: 5px;
+  }
+}
