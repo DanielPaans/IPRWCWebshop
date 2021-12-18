@@ -4,8 +4,7 @@ import { HeaderComponent } from '../header/header.component';
 import { ErrorPageComponent } from '../error-page/error-page.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';
-
-
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,14 +13,17 @@ import { FormsModule } from '@angular/forms';
     FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    AppRoutingModule,
+    FormsModule
   ],
   exports: [
     HeaderComponent,
     ErrorPageComponent,
     FooterComponent,
     CommonModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ]
 })
 export class SharedModule { }

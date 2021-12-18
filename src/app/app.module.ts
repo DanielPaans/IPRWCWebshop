@@ -20,7 +20,6 @@ import { ShopModule } from './shop/shop.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     SharedModule,
     HomeModule,
     ContactModule,
@@ -30,7 +29,6 @@ import { ShopModule } from './shop/shop.module';
     ShopModule
   ],
   providers: [],
-  exports: [AppRoutingModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

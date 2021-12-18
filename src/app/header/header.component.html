@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-    <h1>Rocking Men</h1>
+    <h1 class="title" routerLinkActive="active" routerLink="/">Rocking Men</h1>
     <nav class="navbar">
       <ul class="nav navbar-nav navbar-right">
-        <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
-        <li routerLinkActive="active"><a [routerLink]="['/shop']">Shop</a></li>
-        <li routerLinkActive="active"><a routerLink="/info">About us</a></li>
-        <li routerLinkActive="active"><a routerLink="/contact">Contact us</a></li>
+        <li routerLinkActive="active" routerLink="/home"><a>Home</a></li>
+        <li routerLinkActive="active"  routerLink="/shop"><a>Shop</a></li>
+        <li routerLinkActive="active" routerLink="/info"><a>About us</a></li>
+        <li routerLinkActive="active" routerLink="/contact"><a>Contact us</a></li>
       </ul>
     </nav>
   </div>
