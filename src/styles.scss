@@ -1,8 +1,12 @@
 @import "app/shared/variables";
 @import url('https://fonts.googleapis.com/css2?family=New+Rocker&display=swap');
 
-* {
+*  {
   background-color: $silver;
+}
+
+body {
+  background-color: $silver!important;
 }
 
 .backdrop {
@@ -30,4 +34,13 @@
   padding: 1rem;
   text-align: center;
   color: $red;
+}
+
+::-webkit-scrollbar {
+  //width: 1em;
+  background-color: $black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $red;
 }

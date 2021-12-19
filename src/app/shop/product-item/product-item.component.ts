@@ -29,13 +29,15 @@ export class ProductItemComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       const images = document.getElementsByClassName('card-img');
       for (let i = 0; i < images.length; i++) {
-        const rgb: RGB = this.averageColor(images[i]);
-        const brightness = this.brightnessByRGB(rgb);
-        if(this.isBrightEnough(brightness)) {
-          prices[i].className = 'dark';
-        } else {
-          prices[i].className = 'light';
-        }
+        try {
+          const rgb: RGB = this.averageColor(images[i]);
+          const brightness = this.brightnessByRGB(rgb);
+          if(this.isBrightEnough(brightness)) {
+            prices[i].className = 'dark';
+          } else {
+            prices[i].className = 'light';
+          }
+        } catch(e) {}
       }
     }, 500);
   }

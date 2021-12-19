@@ -6,27 +6,30 @@ import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
 import { TitlecasePipe } from './titlecase.pipe';
+import { PathPipe } from './path.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     ErrorPageComponent,
     FooterComponent,
-    TitlecasePipe
+    TitlecasePipe,
+    PathPipe
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     FormsModule
   ],
-  exports: [
-    HeaderComponent,
-    ErrorPageComponent,
-    FooterComponent,
-    CommonModule,
-    FormsModule,
-    AppRoutingModule,
-    TitlecasePipe
-  ]
+    exports: [
+        HeaderComponent,
+        ErrorPageComponent,
+        FooterComponent,
+        CommonModule,
+        FormsModule,
+        AppRoutingModule,
+        TitlecasePipe,
+        PathPipe
+    ]
 })
 export class SharedModule { }

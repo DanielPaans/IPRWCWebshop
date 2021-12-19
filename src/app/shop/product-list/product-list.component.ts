@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Product } from '../../shared/models/product';
 
 @Component({
@@ -8,16 +8,21 @@ import { Product } from '../../shared/models/product';
 })
 export class ProductListComponent implements OnInit {
 
-  public items: Product[] = [];
+  @Input() items: Product[] = [];
   constructor() { }
 
   ngOnInit(): void {
-    this.items = [new Product('gitaar', 'Dit is een gitaar', 5, 149.5, [], 'guitar.jpg'),
-      new Product('gitaar', 'Dit is een gitaar', 5, 149.5, [], 'guitar.jpg'),
-      new Product('gitaar', 'Dit is een gitaar', 5, 149.5, [], 'guitar.jpg'),
-      new Product('versterker', 'Dit is een gitaar', 5, 69, [], 'amplifier.jpg'),
-      new Product('gitaar', 'Dit is een gitaar', 5, 149.5, [], 'guitar.jpg'),
-    ]
+    // this.items = [new Product('gitaar', 'Dit is een gitaar', 5, 149.5, [], 'guitar.jpg'),
+    //   new Product('gitaar', 'Dit is een gitaar', 5, 149.5, [], 'guitar.jpg'),
+    //   new Product('gitaar', 'Dit is een gitaar', 5, 149.5, [], 'guitar.jpg'),
+    //   new Product('versterker', 'Dit is een gitaar', 5, 69, [], 'amplifier.jpg'),
+    //   new Product('gitaar', 'Dit is een gitaar', 5, 149.5, [], 'guitar.jpg'),
+    // ]
   }
+
+  public fillList(products: Product[]): void {
+    this.items = products;
+  }
+
 
 }

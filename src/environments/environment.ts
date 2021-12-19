@@ -2,8 +2,18 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const API_PATH = "http://localhost:8080/api";
 export const environment = {
-  production: false
+  production: false,
+  HTTP_CONFIG: {
+    API_PATH: API_PATH,
+    ADMIN_PATH: API_PATH + "/admin",
+    AUTH_PATH: API_PATH + "/authenticate",
+    USER_PATH: API_PATH + "/user",
+    PRODUCT_PATH: API_PATH + "/product",
+    REVIEW_PATH: API_PATH + "/review",
+    CATEGORY_PATH: API_PATH + "/category"
+  }
 };
 
 /*

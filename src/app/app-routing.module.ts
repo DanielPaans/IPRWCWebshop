@@ -5,6 +5,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { HomeComponent } from './home/home.component';
 import { InfoComponent } from './info/info.component';
 import { ShopComponent } from './shop/shop.component';
+import {PaymentComponent} from "./payment/payment.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'shop', component: ShopComponent, children: []},
   {path: 'info', component: InfoComponent, children: []},
   {path: 'contact', component: ContactComponent, children: []},
+  {path: 'payment', component: PaymentComponent, children: []},
   {path: 'not-found', component: ErrorPageComponent, data: {message: 'Pagina niet gevonden'}},
   {path: 'server-error', component: ErrorPageComponent, data: {message: 'Er is iets misgegaan met de server'}},
   {path: 'unauthorized', component: ErrorPageComponent, data: {message: 'Je bent hier niet toegestaan'}},

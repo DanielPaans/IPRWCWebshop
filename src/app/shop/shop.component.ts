@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Product} from "../shared/models/product";
+import {Category} from "../shared/models/Category";
+import {NgForm} from "@angular/forms";
+import {ProductService} from "../shared/product.service";
+import {CategoryService} from "../shared/category.service";
 
 @Component({
   selector: 'app-shop',
@@ -7,9 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopComponent implements OnInit {
 
-  constructor() { }
+  public selectedCategory = 'All';
+  public categories: Category[] = [];
+  public products: Product[] = [];
+  @ViewChild('f') form: NgForm;
+  public keyword = '';
+
+  constructor(private productService: ProductService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.getProducts();
+    this.getCategories();
   }
 
+  public getCategories(): void {
+    this.categories = this.categoryService.getCategories();
+  }
+
+  public getProducts(): void {
+    this.productService.getProducts(this.keyword, (this.selectedCategory === 'All') ? null : this.selectedCategory)
+      .subscribe({
+      next: results => {
+        this.products = results;
+      }, error : err => {
+        console.log(err);
+      }
+    })
+  }
 }

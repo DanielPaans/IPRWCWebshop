@@ -21,7 +21,6 @@ h4 {
   width: 100%;
   padding: 5px;
   text-align: right;
-  //margin-top: -1.95em;
   background-color: transparent;
 
   position: absolute;
@@ -38,18 +37,26 @@ h4 {
 }
 
 .card:hover {
+  cursor: pointer;
   transform: translateY(-0.5em);
   transition: 0.5s;
   h4 {
     animation: slide-in-price ease-in 1s forwards;
-    display: block;
-    //opacity: 100%;
     transform: translateY(0);
     transition-property: transform;
     transition-duration: 1s;
   }
 }
 
+// Responsiveness
+@media #{$media-mobile} {
+  h4 {
+    animation: none;
+    display: none;
+  }
+}
+
+// Animations
 @keyframes slide-in-price {
   60% {
     display: block;

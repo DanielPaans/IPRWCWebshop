@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { AdminModule } from './admin/admin.module';
 import { InfoModule } from './info/info.module';
 import { ShopModule } from './shop/shop.module';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ShopModule } from './shop/shop.module';
     AuthModule,
     AdminModule,
     InfoModule,
-    ShopModule
+    ShopModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

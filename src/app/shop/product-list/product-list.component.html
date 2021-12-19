@@ -1,5 +1,6 @@
 <div class="container">
-    <ul class="product-list">
+    <ul class="product-list" *ngIf="items.length > 0">
       <li *ngFor="let item of items"><app-product [item]="item"></app-product></li>
     </ul>
+    <h1 class="title" *ngIf="items.length === 0">No products found, <br> Try something else</h1>
 </div>

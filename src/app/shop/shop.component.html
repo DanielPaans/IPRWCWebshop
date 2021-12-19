@@ -1,1 +1,16 @@
-<p>shop works!</p>
+<h1 class="title" style="margin-bottom: 0;">Shopping</h1>
+<div class="search-container">
+  <form (ngSubmit)="getProducts()" #f="ngForm">
+    <div class="searchbar">
+      <input type="text" placeholder="Search.." name="search" id="search" required [(ngModel)]="keyword" (keyup)="getProducts()">
+      <button type="submit"><img src="{{'loupe2.png' | path}}" alt="search-icon"></button>
+    </div>
+    <div class="selection">
+      <select id="filter" name="filter" ngModel [(ngModel)]="selectedCategory" (ngModelChange)="getProducts()">
+        <option value="All">All</option>
+        <option *ngFor="let category of categories;" value="{{category.name}}">{{category.name}}</option>
+      </select>
+    </div>
+  </form>
+</div>
+<app-product-list [items]="products"></app-product-list>
