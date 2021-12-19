@@ -9,7 +9,7 @@
   }
 </style>
 <div class="card">
-  <h3 class="card-text">{{item.name}}</h3>
+  <h3 class="card-text">{{item.name | titlecase}}</h3>
   <img class="card-img" alt="{{item.name}}" src="./assets/images/{{item.imagePath}}">
   <h4>&euro;{{item.price}}</h4>
 </div>

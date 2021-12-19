@@ -5,12 +5,14 @@ import { ErrorPageComponent } from '../error-page/error-page.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
+import { TitlecasePipe } from './titlecase.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     ErrorPageComponent,
-    FooterComponent
+    FooterComponent,
+    TitlecasePipe
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { AppRoutingModule } from '../app-routing.module';
     FooterComponent,
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TitlecasePipe
   ]
 })
 export class SharedModule { }
