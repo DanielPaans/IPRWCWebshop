@@ -1,7 +1,5 @@
 <div class="container">
-  <div class="row">
-    <ul class="list-group">
-      <li *ngFor="let item of items" class="list-group-item">{{item}}</li>
+    <ul class="product-list">
+      <li *ngFor="let item of items"><app-product [item]="item"></app-product></li>
     </ul>
-  </div>
 </div>

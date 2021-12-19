@@ -58,11 +58,11 @@ ul {
 }
 
 @keyframes fade-in-bar {
-  0% {
+  from {
     border-bottom-width: 0px;
   }
 
-  100% {
+  to {
     border-bottom-width: 5px;
   }
 }
