@@ -44,12 +44,14 @@ export class ProductItemComponent implements OnInit, AfterViewInit {
 
   private averageColor(imageElement): RGB {
 
+    // Create canvas
     let canvas: HTMLCanvasElement = document.createElement('canvas'),
       context: CanvasRenderingContext2D = canvas.getContext && canvas.getContext('2d'),
       imgData, width, height, length,
       rgb: RGB = {r: 0, g: 0, b: 0},
       count: number = 0;
 
+    // get image
     height = canvas.height =
       imageElement.naturalHeight ||
       imageElement.offsetHeight ||
@@ -61,12 +63,14 @@ export class ProductItemComponent implements OnInit, AfterViewInit {
 
     context.drawImage(imageElement, 0, 0);
 
+    // Get imageData
     const searchSize = 200;
     imgData = context.getImageData(
       width - searchSize, height - searchSize, searchSize, searchSize);
 
     length = imgData.data.length;
 
+    // Loop through imageData
     for (let i = 0; i < length; i += 4) {
       rgb.r += imgData.data[i];
       rgb.g += imgData.data[i + 1];
@@ -75,6 +79,7 @@ export class ProductItemComponent implements OnInit, AfterViewInit {
       count++;
     }
 
+    // Calculate average
     rgb.r = Math.floor(rgb.r / count);
     rgb.g = Math.floor(rgb.g / count);
     rgb.b = Math.floor(rgb.b / count);

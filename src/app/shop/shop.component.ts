@@ -1,22 +1,25 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Product} from "../shared/models/product";
 import {Category} from "../shared/models/Category";
 import {NgForm} from "@angular/forms";
 import {ProductService} from "../shared/product.service";
 import {CategoryService} from "../shared/category.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss']
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit, OnDestroy {
 
   public selectedCategory = 'All';
   public categories: Category[] = [];
   public products: Product[] = [];
   @ViewChild('f') form: NgForm;
   public keyword = '';
+
+  private categorySub: Subscription;
 
   constructor(private productService: ProductService, private categoryService: CategoryService) { }
 
@@ -26,7 +29,13 @@ export class ShopComponent implements OnInit {
   }
 
   public getCategories(): void {
-    this.categories = this.categoryService.getCategories();
+    this.categorySub = this.categoryService.categoriesObs.subscribe({
+      next: value => {
+        this.categories = value;
+      }
+    });
+
+    this.categoryService.getCategories();
   }
 
   public getProducts(): void {
@@ -38,5 +47,9 @@ export class ShopComponent implements OnInit {
         console.log(err);
       }
     })
+  }
+
+  ngOnDestroy(): void {
+    this.categorySub.unsubscribe();
   }
 }

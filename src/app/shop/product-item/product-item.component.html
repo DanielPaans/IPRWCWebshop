@@ -1,5 +1,5 @@
-<div class="card">
+<a routerLink="../product/{{item.id}}" class="card">
   <h3 class="card-text">{{item.name | titlecase}}</h3>
   <img class="card-img" alt="{{item.name}}" src="{{item.imagePath | path}}">
   <h4 class="light">&euro;{{item.price}}</h4>
-</div>
+</a>

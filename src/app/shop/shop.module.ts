@@ -4,6 +4,8 @@ import { ShopComponent } from './shop.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import {SharedModule} from "../shared/shared.module";
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import {AppRoutingModule} from "../app-routing.module";
 
 
 
@@ -11,14 +13,17 @@ import {SharedModule} from "../shared/shared.module";
   declarations: [
     ShopComponent,
     ProductListComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    AppRoutingModule
   ],
   exports: [
-    ProductListComponent
+    ProductListComponent,
+    ProductDetailsComponent
   ]
 })
 export class ShopModule { }

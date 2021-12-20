@@ -20,6 +20,10 @@ export class ProductService {
     return this.http.get<Product[]>(this.URL, {params: params}).pipe(catchError(this.handleError));
   }
 
+  public getProduct(id: string): Observable<any> {
+    return this.http.get<Product>(this.URL + '/' + id).pipe(catchError(this.handleError));
+  }
+
   private handleError(err: HttpErrorResponse): Observable<never> {
     //TODO: error handling
     return throwError(() => err.error);

@@ -2,6 +2,7 @@ import { Category } from "./Category";
 
 export class Product {
 
+  private _id: string;
   private _name: string;
   private _description: string;
   private _amount: number;
@@ -9,7 +10,8 @@ export class Product {
   private _categories: Category[];
   private _imagePath: string;
 
-  constructor(name: string, description: string, amount: number, price: number, categories: Category[], imagePath: string) {
+  constructor(id: string, name: string, description: string, amount: number, price: number, categories: Category[], imagePath: string) {
+    this._id = id;
     this._name = name;
     this._description = description;
     this._amount = amount;
@@ -18,6 +20,14 @@ export class Product {
     this._imagePath = imagePath;
   }
 
+
+  get id(): string {
+    return this._id;
+  }
+
+  set id(value: string) {
+    this._id = value;
+  }
 
   get name(): string {
     return this._name;

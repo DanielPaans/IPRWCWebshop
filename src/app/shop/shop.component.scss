@@ -1,11 +1,5 @@
 @import "../shared/variables";
 
-@mixin change-select-when-option-is-clicked {
-  select {
-    border-radius: inherit;
-  }
-}
-
 h1 {
   font-size: 5em;
 }

@@ -1,0 +1,14 @@
+<div id="details" class="container">
+  <img alt="{{product.name}}" src="{{product.imagePath | path}}">
+  <div class="product-info">
+    <h1 class="title">{{product.name}}</h1>
+    <h3>Price<br>{{product.price}}</h3>
+    <h3>{{product.amount > 0 ? 'In stock' : 'Out of stock'}}</h3>
+    <p>{{product.description}}p;olikujhgfdfrgthukl,jhmngbfvdewr4t5yujkhmngbfvdretyujkh,mbn vgfvdser jydhrjhtw eesh tsrh sfhts rger shtsrh tsrh shg gxfh sth srh trsh trs htrs hgngxfvbb grhsrrrrrbfgrteshynfgbd nmjfyrtszdkrsm nj</p>
+  </div>
+  <div class="suggestions">
+    <h2>Suggestions</h2>
+    <app-product-list [items]="suggestions" [columns]="6"></app-product-list>
+  </div>
+</div>
+

@@ -6,11 +6,14 @@ import { HomeComponent } from './home/home.component';
 import { InfoComponent } from './info/info.component';
 import { ShopComponent } from './shop/shop.component';
 import {PaymentComponent} from "./payment/payment.component";
+import {ProductDetailsComponent} from "./shop/product-details/product-details.component";
+import {ProductListComponent} from "./shop/product-list/product-list.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent, children: []},
   {path: 'shop', component: ShopComponent, children: []},
+  {path: 'product/:id', component: ProductDetailsComponent, children: []},
   {path: 'info', component: InfoComponent, children: []},
   {path: 'contact', component: ContactComponent, children: []},
   {path: 'payment', component: PaymentComponent, children: []},
