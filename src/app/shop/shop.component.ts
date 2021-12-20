@@ -18,12 +18,15 @@ export class ShopComponent implements OnInit, OnDestroy {
   public products: Product[] = [];
   @ViewChild('f') form: NgForm;
   public keyword = '';
+  public columns = 3;
 
   private categorySub: Subscription;
 
   constructor(private productService: ProductService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.columns = window.innerWidth < 600 ? 1 : window.innerWidth < 768 ? 2 : 3;
+
     this.getProducts();
     this.getCategories();
   }

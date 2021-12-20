@@ -1,7 +1,7 @@
 <div id="home-img">
   <div class="overlay"></div>
 </div>
-<div>
+<div id="home-products">
   <h1 class="title">Products of {{randomCategoryName}}</h1>
-  <app-product-list [items]="products"></app-product-list>
+  <app-product-list [items]="products" [columns]="columns"></app-product-list>
 </div>

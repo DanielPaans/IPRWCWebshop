@@ -5,8 +5,10 @@ import { ErrorPageComponent } from '../error-page/error-page.component';
 import { FooterComponent } from '../footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
-import { TitlecasePipe } from './titlecase.pipe';
-import { PathPipe } from './path.pipe';
+import {TitlecasePipe} from "./pipes/titlecase.pipe";
+import {PathPipe} from "./pipes/path.pipe";
+import {PricePipe} from "./pipes/price.pipe";
+
 
 @NgModule({
   declarations: [
@@ -14,22 +16,24 @@ import { PathPipe } from './path.pipe';
     ErrorPageComponent,
     FooterComponent,
     TitlecasePipe,
-    PathPipe
+    PathPipe,
+    PricePipe
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
     FormsModule
   ],
-    exports: [
-        HeaderComponent,
-        ErrorPageComponent,
-        FooterComponent,
-        CommonModule,
-        FormsModule,
-        AppRoutingModule,
-        TitlecasePipe,
-        PathPipe
-    ]
+  exports: [
+    HeaderComponent,
+    ErrorPageComponent,
+    FooterComponent,
+    CommonModule,
+    FormsModule,
+    AppRoutingModule,
+    TitlecasePipe,
+    PathPipe,
+    PricePipe
+  ]
 })
 export class SharedModule { }

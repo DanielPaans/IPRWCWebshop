@@ -14,12 +14,15 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public products: Product[] = [];
   public randomCategoryName = 'None';
+  public columns = 3;
 
   private maxAmount = 6;
   private categorySub: Subscription;
   constructor(private productService: ProductService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
+    this.columns = window.innerWidth < 768 ? 2 : 3;
+
     this.categorySub = this.categoryService.categoriesObs.subscribe({
       next: categories => {
         this.randomCategoryName = categories[Math.floor(Math.random() * categories.length)].name;
