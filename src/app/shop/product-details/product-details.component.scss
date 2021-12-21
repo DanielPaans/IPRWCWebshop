@@ -14,16 +14,6 @@
     padding-top: 1em;
   }
 
-  button {
-    font-size: 1.5em;
-    background-color: $yellow;
-    border-color: $yellow;
-
-    &:focus {
-      box-shadow: 0 0 0 0.1em $red !important;
-    }
-  }
-
   h1 {
     padding-bottom: 0;
     margin-bottom: 1em;

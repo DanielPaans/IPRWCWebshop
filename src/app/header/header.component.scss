@@ -6,6 +6,7 @@
 
 .row {
   justify-content: space-between;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -56,7 +57,21 @@ ul {
   content: url($image-path + "trolley-hover.svg");
 }
 
+#shopping-cart:focus {
+  animation-name: ride-away, fade-in;
+  animation-iteration-count: 1, 1;
+  animation-duration: 1s, 0.5s;
+  animation-delay: 0s, 1s;
+  animation-timing-function: ease-out, ease-in;
+}
+
 @media #{$media-mobile} {
+  #shopping-cart {
+    width: 50%;
+  }
+  .cart-active {
+    animation: ride-away ease-out 1.5s;
+  }
   h1 {
     width: 100%;
     text-align: center;
@@ -73,10 +88,22 @@ ul {
 
 @keyframes fade-in-bar {
   from {
-    border-bottom-width: 0px;
+    border-bottom-width: 0;
   }
 
   to {
     border-bottom-width: 5px;
+  }
+}
+
+@keyframes ride-away {
+  0% {
+    transform: translateY(-10%);
+  }
+  15% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translateX(200%);
   }
 }

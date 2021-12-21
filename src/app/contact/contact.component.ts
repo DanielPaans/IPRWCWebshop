@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import {NgForm} from "@angular/forms";
+import {KeyValue, KeyValuePipe} from "@angular/common";
+import {SnackbarService} from "../shared/snackbar.service";
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('f') form: NgForm;
+
+  constructor(private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
   }
 
+  public onSubmit() {
+    //Todo: send email
+    this.snackbarService.affirmativeSnackbar('Email send', 'OK');
+    this.form.reset();
+  }
 }

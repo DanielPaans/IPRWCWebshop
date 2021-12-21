@@ -13,7 +13,7 @@ import {Product} from "../shared/models/product";
 export class HomeComponent implements OnInit, OnDestroy {
 
   public products: Product[] = [];
-  public randomCategoryName = 'None';
+  public randomCategoryName = '';
   public columns = 3;
 
   private maxAmount = 6;
@@ -48,3 +48,4 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
 }
+

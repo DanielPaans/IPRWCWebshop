@@ -31,12 +31,6 @@ $animationDelay: 1;
   }
 }
 
-// Animation
-@keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
-}
-
 // Responsiveness
 @media #{$media-mobile} {
   #product-list {

@@ -1,1 +1,21 @@
-<p>contact works!</p>
+<div class="container">
+  <h1 class="title">Send an email</h1>
+  <form (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" id="email" name="email" type="email" required email ngModel #email=ngModel>
+      <div class="alert alert-danger" *ngIf="email.invalid && email.touched">Fill in a valid email</div>
+    </div>
+    <div class="form-group">
+      <label for="subject">Subject</label>
+      <input class="form-control" type="text" id="subject" name="subject" required ngModel #subject=ngModel>
+      <div class="alert alert-danger" *ngIf="subject.invalid && subject.touched">Give your email a subject</div>
+    </div>
+    <div class="form-group">
+      <label for="content">Content</label>
+      <textarea class="form-control" id="content" name="content" required ngModel rows="10" #content=ngModel></textarea>
+      <div class="alert alert-danger" *ngIf="content.invalid && content.touched">Give your email some content</div>
+    </div>
+    <button class="btn" type="submit" [disabled]="f.invalid">Submit</button>
+  </form>
+</div>

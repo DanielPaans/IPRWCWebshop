@@ -35,10 +35,30 @@ $afko-app-theme: mat.define-light-theme((
 
 @import "app/shared/variables";
 
+// Global styling
 body {
   background-color: $silver!important;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+html, body {
+  height:100%;
+}
+
+.container {
+  padding-bottom: 2em;
+}
+
+::-webkit-scrollbar {
+  background-color: $black;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $red;
+}
+
+// Global classes
 .backdrop {
   position: absolute;
   top: 0;
@@ -66,12 +86,24 @@ body {
   color: $red;
 }
 
-::-webkit-scrollbar {
-  background-color: $black;
+.btn {
+  font-size: 1.5em !important;
+  background-color: $yellow !important;
+  border-color: $yellow !important;
+  color: black !important;
+
+  &:focus {
+    box-shadow: 0 0 0 0.1em $red !important;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: $red;
+.btn:hover {
+  background-color: #f88913 !important;
+}
+
+.btn:disabled {
+  background-color: rgba(248, 183, 19, 0.91) !important;
+  cursor: not-allowed;
 }
 
 .snack-affirmative{
@@ -104,23 +136,12 @@ body {
   border-radius: 0.25rem;
 }
 
-html, body {
-  height:100%;
+// Animation
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-//// Responsiveness
-//@media #{$media-mobile} {
-//  .snackbar-alert {
-//    width: 80vw!important;
-//    margin: auto!important;
-//  }
-//
-//  .mat-snack-bar-container {
-//    width: 100% !important;
-//  }
-//}
