@@ -27,7 +27,7 @@ h1 {
 $animationDelay: 1;
 @for $i from 1 through 15 {
   #product-list li:nth-of-type(#{$i}) {
-    animation-delay: #{0.3+($i)/30}s;
+    animation-delay: calc(0.3+ #{($i)}/30)s;
   }
 }
 

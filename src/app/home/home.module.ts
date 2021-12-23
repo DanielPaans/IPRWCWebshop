@@ -8,9 +8,9 @@ import { ShopModule } from '../shop/shop.module';
   declarations: [
     HomeComponent
   ],
-    imports: [
-        CommonModule,
-        ShopModule
-    ]
+  imports: [
+      CommonModule,
+      ShopModule
+  ]
 })
 export class HomeModule { }

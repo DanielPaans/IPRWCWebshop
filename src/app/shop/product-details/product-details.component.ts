@@ -1,8 +1,9 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
-import {Product} from "../../shared/models/product";
+import {Product} from "../../shared/models/Product";
 import {ActivatedRoute, Params} from "@angular/router";
 import {ProductService} from "../../shared/product.service";
 import {SnackbarService} from "../../shared/snackbar.service";
+import {UserService} from "../../shared/user.service";
 
 @Component({
   selector: 'app-product-details',
@@ -15,11 +16,11 @@ export class ProductDetailsComponent implements OnInit {
   public suggestions: Product[] = [];
   public suggestItems = 4;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private snackbarService: SnackbarService) { }
+  constructor(private route: ActivatedRoute, private productService: ProductService,
+              private snackbarService: SnackbarService, private userService: UserService) { }
 
   ngOnInit(): void {
-
-    this.suggestItems = window.innerWidth < 768 ? 3 : 4
+    this.suggestItems = window.innerWidth < 768 ? 3 : 4;
 
     this.route.params.subscribe({
       next: (params: Params) => {
@@ -28,6 +29,7 @@ export class ProductDetailsComponent implements OnInit {
             this.product = value;
             this.getSuggestions();
             this.setStock();
+            this.userService.addToRecentlySearched(this.product);
           },
           error: err => {
             console.log(err);
@@ -57,8 +59,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   public addToCart() {
+    this.userService.addToCart(this.product);
     this.snackbarService.affirmativeSnackbar(`Added ${this.product.name} to cart`, 'OK');
-    //TODO: Add to cart for real
   }
-
 }

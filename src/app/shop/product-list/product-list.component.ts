@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import { Product } from '../../shared/models/product';
+import { Product } from '../../shared/models/Product';
 
 @Component({
   selector: 'app-product-list',

@@ -3,7 +3,10 @@ import {ProductService} from "../shared/product.service";
 import {CategoryService} from "../shared/category.service";
 import {Category} from "../shared/models/Category";
 import {Observable, Subscription} from "rxjs";
-import {Product} from "../shared/models/product";
+import {Product} from "../shared/models/Product";
+import {User} from "../shared/models/User";
+import {UserService} from "../shared/user.service";
+import {stringify} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-home',
@@ -18,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private maxAmount = 6;
   private categorySub: Subscription;
-  constructor(private productService: ProductService, private categoryService: CategoryService) { }
+  constructor(private productService: ProductService, private categoryService: CategoryService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.columns = window.innerWidth < 768 ? 2 : 3;

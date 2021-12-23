@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {UserService} from "./shared/user.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'iprwc-webshop';
+export class AppComponent implements OnInit, OnDestroy {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+  }
+
+
 }
