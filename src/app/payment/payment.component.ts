@@ -17,13 +17,11 @@ export class PaymentComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userSub = this.userService.userSubject.subscribe(() => {
-      this.shoppingCart = this.userService.getShoppingCart();
-    });
+    this.shoppingCart = this.userService.getShoppingCart();
   }
 
   ngOnDestroy(): void {
-    this.userSub.unsubscribe();
+
   }
 
 }

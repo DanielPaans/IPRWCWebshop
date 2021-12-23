@@ -21,7 +21,7 @@ export class UserService {
   constructor(private http: HttpClient, private productService: ProductService) {
   }
 
-  public storeUser(): void {
+  private storeUser(): void {
     localStorage.setItem(this.USER_KEYS[0], JSON.stringify(Array.from(this.user.shoppingCart.values())));
     localStorage.setItem(this.USER_KEYS[1], JSON.stringify(Array.from(this.user.recentlySearched.values())));
   }
@@ -53,6 +53,20 @@ export class UserService {
     return products;
   }
 
+  public getRecentlySearched(limit?: number): Product[] {
+    const products: Product[] = [];
+    Array.from(this.user.recentlySearched).slice(-limit).reverse().forEach(productId => {
+      this.productService.getProduct(productId).subscribe({
+        next: (product: Product) => {
+          products.push(product);
+        }, error: err => {
+          console.log(err);
+        }
+      });
+    });
+    return products;
+  }
+
   private handleError(err: HttpErrorResponse): Observable<never> {
     //TODO: error handling
     return throwError(() => err.error);
@@ -70,7 +84,7 @@ export class UserService {
     this.storeUser();
   }
 
-  private getStoredUser(): void {
+  public getStoredUser(): void {
     this.user.shoppingCart = new Set<string>(Array.from(JSON.parse(localStorage.getItem(this.USER_KEYS[0]))));
     this.user.recentlySearched = new Set<string>(Array.from(JSON.parse(localStorage.getItem(this.USER_KEYS[1]))));
   }

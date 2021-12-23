@@ -2,6 +2,12 @@
   <div class="overlay"></div>
 </div>
 <div id="home-products">
-  <h1 class="title">Products of {{randomCategoryName}}</h1>
-  <app-product-list [items]="products" [columns]="columns"></app-product-list>
+  <div *ngIf="!recentlySearched">
+    <h1 class="title">Products of {{randomCategoryName}}</h1>
+    <app-product-list [items]="products" [columns]="columns"></app-product-list>
+  </div>
+  <div *ngIf="recentlySearched">
+    <h1 class="title">RecentlySearched products</h1>
+    <app-product-list [items]="recentlySearched" [columns]="columns"></app-product-list>
+  </div>
 </div>

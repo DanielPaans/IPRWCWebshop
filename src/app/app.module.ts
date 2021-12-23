@@ -20,6 +20,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {SnackbarService} from "./shared/snackbar.service";
+import {PaymentComponent} from "./payment/payment.component";
+import {PaymentModule} from "./payment/payment.module";
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import {SnackbarService} from "./shared/snackbar.service";
     AdminModule,
     InfoModule,
     ShopModule,
+    PaymentModule,
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,

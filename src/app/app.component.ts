@@ -8,9 +8,10 @@ import {UserService} from "./shared/user.service";
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getStoredUser();
   }
 
   ngOnDestroy(): void {

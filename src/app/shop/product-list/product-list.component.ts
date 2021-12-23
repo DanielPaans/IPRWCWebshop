@@ -16,10 +16,12 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {  }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      let grid = document.getElementById('product-list');
-      grid.style.setProperty('grid-template-columns', `repeat(${this.columns}, minmax(0, 1fr)`);
-    }, 500);
+    try {
+      setTimeout(() => {
+        let grid = document.getElementById('product-list');
+        grid.style.setProperty('grid-template-columns', `repeat(${this.columns}, minmax(0, 1fr)`);
+      }, 500);
+    } catch (e) { }
   }
 
 
