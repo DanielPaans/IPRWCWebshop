@@ -1,12 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from "../shared/product.service";
 import {CategoryService} from "../shared/category.service";
-import {Category} from "../shared/models/Category";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {Product} from "../shared/models/Product";
-import {User} from "../shared/models/User";
 import {UserService} from "../shared/user.service";
-import {stringify} from "@angular/compiler/src/util";
 
 @Component({
   selector: 'app-home',
