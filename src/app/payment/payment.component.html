@@ -1,9 +1,8 @@
-
 <button class="btn btn-primary">Buy</button>
 <h1 class="title">Products</h1>
 <div class="container">
-  <ul id="product-list" *ngIf="items.length > 0">
-    <li *ngFor="let item of items"></li>
+  <ul id="product-list" *ngIf="shoppingCart.length > 0">
+    <li *ngFor="let item of shoppingCart"><app-shopping-cart-item [item]="item"></app-shopping-cart-item></li>
   </ul>
-  <h1 class="title" *ngIf="items.length === 0">Shopping cart is empty</h1>
+  <h2 class="title" *ngIf="shoppingCart.length === 0">Shopping cart is empty, go to <a routerLink="/shop">shop</a> to order.</h2>
 </div>
