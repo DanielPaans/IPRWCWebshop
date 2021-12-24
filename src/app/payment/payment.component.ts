@@ -19,10 +19,14 @@ export class PaymentComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.shoppingCart = this.userService.getShoppingCart();
+
+    this.userSub = this.userService.user.subscribe(() => {
+        this.shoppingCart = this.userService.getShoppingCart();
+    });
   }
 
   ngOnDestroy(): void {
-
+    this.userSub.unsubscribe();
   }
 
   public clearCart(): void {

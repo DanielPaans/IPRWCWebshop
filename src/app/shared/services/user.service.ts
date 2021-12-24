@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Product} from "../models/Product";
 import {User} from "../models/User";
-import {BehaviorSubject, catchError, Observable, Subject, take, throwError} from "rxjs";
+import {BehaviorSubject, catchError, filter, map, Observable, Subject, take, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Category} from "../models/Category";
@@ -23,19 +23,10 @@ export class UserService {
   public updateUser() {
     this.storeUser();
     this.getStoredUser();
-    // this.http.get<User>(this.URL).pipe(catchError(this.handleError)).subscribe({
-    //   next: value => {
-    //     console.log(value);
-    //
-    //     this.userSubject.next(value);
-    //   }, error: err => {
-    //     console.log(err);
-    //     //TODO: handle error
-    //   }
-    // });
   }
 
   public getShoppingCart(): Product[] {
+    this.checkProducts();
     const products: Product[] = [];
     this.user.value.shoppingCart.forEach(productId => {
       this.productService.getProduct(productId).subscribe({
@@ -50,18 +41,40 @@ export class UserService {
   }
 
   public getRecentlySearched(limit?: number): Product[] {
+    this.checkProducts();
     const products: Product[] = [];
     Array.from(this.user.value.recentlySearched).slice(-limit).reverse().forEach(productId => {
       this.productService.getProduct(productId).subscribe({
         next: (product: Product) => {
           products.push(product);
-        }, error: err => {
-          console.log(err);
         }
       });
     });
     return products;
   }
+
+  private checkProducts(): void {
+    this.productService.getProducts('').subscribe(products => {
+      products = products.map(product => {
+        return product.id;
+      });
+
+      this.user.value.shoppingCart.forEach(id => {
+        if (!(products.includes(id))) {
+          this.user.value.shoppingCart.delete(id);
+        }
+      });
+
+      this.user.value.recentlySearched.forEach(id => {
+        if (!(products.includes(id))) {
+          this.user.value.recentlySearched.delete(id);
+        }
+      });
+
+      this.storeUser();
+    });
+  }
+
 
   private handleError(err: HttpErrorResponse): Observable<never> {
     //TODO: error handling
@@ -77,6 +90,13 @@ export class UserService {
     this.getStoredUser();
     this.user.value.shoppingCart.add(product.id);
     this.storeUser();
+  }
+
+  public removeFromCart(product: Product): void {
+    this.getStoredUser();
+    this.user.value.shoppingCart.delete(product.id);
+    this.storeUser();
+    this.updateUser();
   }
 
   public addToRecentlySearched(product: Product): void {

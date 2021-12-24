@@ -5,6 +5,7 @@ import {Product} from "../../shared/models/Product";
 import {Category} from "../../shared/models/Category";
 import {CategoryService} from "../../shared/services/category.service";
 import {ImageService} from "../../shared/services/image.service";
+import {SnackbarService} from "../../shared/services/snackbar.service";
 
 @Component({
   selector: 'app-add-product',
@@ -18,7 +19,8 @@ export class AddProductComponent implements OnInit {
   public selectedCategory: Category = null;
   private image: File;
 
-  constructor(private productService: ProductService, private categoryService: CategoryService, private imageService: ImageService) { }
+  constructor(private productService: ProductService, private categoryService: CategoryService,
+              private imageService: ImageService, private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
     this.categoryService.getCategories();
@@ -56,11 +58,13 @@ export class AddProductComponent implements OnInit {
       "categories": categories,
       "imagePath": this.image.name }
     this.productService.postProduct(product).subscribe({
-      next: value => {
+      next: () => {
         this.saveImage();
-        console.log(value);
+        this.snackbarService.affirmativeSnackbar("Product added", "OK");
+        this.form.reset();
       }, error: err => {
         console.log(err);
+        this.snackbarService.errorSnackbar("Something went wrong", "OK");
       }
     });
   }

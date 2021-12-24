@@ -1,5 +1,6 @@
 import {Product} from "../../shared/models/Product";
 import {Component, Input, OnInit} from "@angular/core";
+import {UserService} from "../../shared/services/user.service";
 
 @Component({
   selector: 'app-shopping-cart-item',
@@ -9,9 +10,13 @@ import {Component, Input, OnInit} from "@angular/core";
 export class ShoppingCartItemComponent implements OnInit {
 
   @Input() item: Product
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+  }
+
+  public deleteItem() {
+    this.userService.removeFromCart(this.item);
   }
 
 }

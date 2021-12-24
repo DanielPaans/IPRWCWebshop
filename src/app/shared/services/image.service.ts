@@ -13,16 +13,9 @@ export class ImageService {
     const formData = new FormData();
     formData.append('image', image);
     this.http.post(environment.HTTP_CONFIG.IMAGE_PATH, formData).subscribe({
-      next: value => {
-        console.log(value);
-      }, error: err => {
+      error: err => {
         console.log(err);
       }
     });
-  }
-
-  public deleteImage(image: File) {
-    const formData = new FormData();
-    formData.append('image', image);
   }
 }
