@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UserService} from "./shared/user.service";
+import {UserService} from "./shared/services/user.service";
+import {AuthenticationService} from "./shared/services/authentication.service";
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,10 @@ import {UserService} from "./shared/user.service";
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  constructor(private userService: UserService) { }
+  constructor(private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.userService.getStoredUser();
+    this.authenticationService.autoLogin();
   }
 
   ngOnDestroy(): void {

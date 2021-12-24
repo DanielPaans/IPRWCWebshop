@@ -1,9 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductService} from "../shared/product.service";
-import {CategoryService} from "../shared/category.service";
+import {ProductService} from "../shared/services/product.service";
+import {CategoryService} from "../shared/services/category.service";
 import {Subscription} from "rxjs";
 import {Product} from "../shared/models/Product";
-import {UserService} from "../shared/user.service";
+import {UserService} from "../shared/services/user.service";
 
 @Component({
   selector: 'app-home',
@@ -23,8 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.recentlySearched = this.userService.getRecentlySearched(this.maxAmount);
-    // this.recentlySearched = this.recentlySearched.slice(0, this.maxAmount);
-    console.log(this.recentlySearched);
+
     this.columns = window.innerWidth < 768 ? 2 : 3;
 
     this.categorySub = this.categoryService.categoriesObs.subscribe({

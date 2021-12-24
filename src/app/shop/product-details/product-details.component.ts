@@ -1,9 +1,9 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {Product} from "../../shared/models/Product";
 import {ActivatedRoute, Params} from "@angular/router";
-import {ProductService} from "../../shared/product.service";
-import {SnackbarService} from "../../shared/snackbar.service";
-import {UserService} from "../../shared/user.service";
+import {ProductService} from "../../shared/services/product.service";
+import {SnackbarService} from "../../shared/services/snackbar.service";
+import {UserService} from "../../shared/services/user.service";
 
 @Component({
   selector: 'app-product-details',
@@ -43,7 +43,9 @@ export class ProductDetailsComponent implements OnInit {
     const randomCategory = this.product.categories[Math.floor(Math.random() * this.product.categories.length)].name
     this.productService.getProducts('', randomCategory).subscribe({
       next: value => {
+        // filter current product out of suggestions
         value = value.filter(item => this.product.id !== item.id);
+
         this.suggestions = value.slice(0, this.suggestItems);
       }, error: err => {
         console.log(err);

@@ -1,0 +1,36 @@
+@import "../shared/variables";
+
+#product-list {
+  li {
+    list-style: none;
+  }
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  h1 {
+    margin-left: 2rem;
+  }
+
+  button {
+    margin: auto 1em;
+    border-radius: .2rem!important;
+  }
+}
+
+#clear {
+  background-color: $red!important;
+  border-color: $red!important;
+  color: $silver!important;
+
+  &:hover {
+    background-color: #992a22!important;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.1em $yellow !important;
+  }
+}

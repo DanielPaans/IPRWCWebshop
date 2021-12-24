@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../../shared/models/Product";
+import {Component, Input, OnInit} from "@angular/core";
 
 @Component({
   selector: 'app-shopping-cart-item',
@@ -8,7 +8,7 @@ import {Product} from "../../shared/models/Product";
 })
 export class ShoppingCartItemComponent implements OnInit {
 
-  // @Input item: Product
+  @Input() item: Product
   constructor() { }
 
   ngOnInit(): void {

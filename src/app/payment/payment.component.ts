@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from "../shared/models/Product";
-import {UserService} from "../shared/user.service";
+import {UserService} from "../shared/services/user.service";
 import {Subscription} from "rxjs";
+import {SnackbarService} from "../shared/services/snackbar.service";
 
 @Component({
   selector: 'app-payment',
@@ -14,13 +15,23 @@ export class PaymentComponent implements OnInit, OnDestroy {
   public shoppingCart: Product[] = [];
   public userSub: Subscription;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private snackbarService: SnackbarService) { }
 
   ngOnInit(): void {
     this.shoppingCart = this.userService.getShoppingCart();
   }
 
   ngOnDestroy(): void {
+
+  }
+
+  public clearCart(): void {
+    this.userService.clearCart();
+    this.shoppingCart = [];
+    this.snackbarService.affirmativeSnackbar("Shopping cart cleared", "OK");
+  }
+
+  public pay(): void {
 
   }
 

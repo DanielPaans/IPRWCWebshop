@@ -7,7 +7,7 @@
       <h3 id="stock"></h3>
     </div>
     <p>{{product.description}} p;olikujhg fdfrgthukl,jhmngbfv dewr4t5yu jkhmngbfvd retyujkh,mbn vgfvdser jydhrjhtw eesh tsrh sfhts rger shtsrh tsrh shg gxfh sth srh trsh trs htrs hgngxfvbb grhsrrrrrbfgrteshynfgbd nmjfyrtszdkrsm nj</p>
-    <button class="btn" (click)="addToCart()">Add to cart</button>
+    <button class="btn" (click)="addToCart()" [disabled]="product.amount <= 0">Add to cart</button>
   </div>
   <div class="suggestions">
     <h2>Suggestions</h2>

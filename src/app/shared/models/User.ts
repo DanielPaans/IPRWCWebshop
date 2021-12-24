@@ -5,16 +5,19 @@ export class User {
   private _recentlySearched: Set<string>;
   private _shoppingCart: Set<string>;
   private _username: string;
-  private _password: string;
+  private _role: string;
   private _email: string;
+  private _token: string;
 
 
-  constructor(recentlySearched: Set<string> = new Set<string>(), shoppingCart: Set<string> = new Set<string>(), username: string = '', password: string = '', email: string = '') {
+  constructor(recentlySearched: Set<string> = new Set<string>(), shoppingCart: Set<string> = new Set<string>(),
+              username?: string, role?: string, email?: string, token?: string) {
     this._recentlySearched = recentlySearched;
     this._shoppingCart = shoppingCart;
     this._username = username;
-    this._password = password;
+    this._role = role;
     this._email = email;
+    this._token = token;
   }
 
 
@@ -42,12 +45,12 @@ export class User {
     this._username = value;
   }
 
-  get password(): string {
-    return this._password;
+  get role(): string {
+    return this._role;
   }
 
-  set password(value: string) {
-    this._password = value;
+  set role(value: string) {
+    this._role = value;
   }
 
   get email(): string {
@@ -56,5 +59,13 @@ export class User {
 
   set email(value: string) {
     this._email = value;
+  }
+
+  get token(): string {
+    return this._token;
+  }
+
+  set token(value: string) {
+    this._token = value;
   }
 }

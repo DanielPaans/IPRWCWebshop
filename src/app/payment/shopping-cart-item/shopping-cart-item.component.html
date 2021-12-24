@@ -1,1 +1,10 @@
-<p>shopping-cart-item works!</p>
+<div id="item">
+  <img alt="{{item.name}}" src="{{item.imagePath | path}}">
+  <h2>{{item.name | titlecase}}</h2>
+  <h3>{{item.price | price}}</h3>
+  <div id="options">
+    <label>amount</label>
+    <input type="number" value="1" min="1" max="{{item.amount}}">
+    <button class="btn">Remove item</button>
+  </div>
+</div>

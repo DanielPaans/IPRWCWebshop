@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {Product} from "../shared/models/Product";
 import {Category} from "../shared/models/Category";
 import {NgForm} from "@angular/forms";
-import {ProductService} from "../shared/product.service";
-import {CategoryService} from "../shared/category.service";
+import {ProductService} from "../shared/services/product.service";
+import {CategoryService} from "../shared/services/category.service";
 import {Subscription} from "rxjs";
 
 @Component({

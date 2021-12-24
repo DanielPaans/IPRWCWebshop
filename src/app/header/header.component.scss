@@ -5,11 +5,15 @@
 }
 
 .row {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  overflow-x: hidden;
+  overflow: hidden;
+  min-height: 4em;
 }
 
 h1 {
+  width: auto;
   padding: 8px 0 0 20px;
 }
 
@@ -19,6 +23,7 @@ h1:hover {
 }
 
 .navbar {
+  width: auto;
   display: block;
 }
 
@@ -46,7 +51,7 @@ ul {
 #shopping-cart {
   padding: 0;
   border-bottom: none;
-  margin-bottom: -12px;
+  margin-bottom: -8px;
   width: 50px;
   height: 50px;
 }
