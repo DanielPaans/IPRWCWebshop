@@ -18,6 +18,8 @@
     padding-bottom: 0;
     margin-bottom: 1em;
     border-bottom: 5px solid $red;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

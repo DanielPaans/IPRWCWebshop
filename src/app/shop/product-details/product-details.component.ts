@@ -1,9 +1,11 @@
-import {Component, HostListener, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from "../../shared/models/Product";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ProductService} from "../../shared/services/product.service";
 import {SnackbarService} from "../../shared/services/snackbar.service";
 import {UserService} from "../../shared/services/user.service";
+import {Role} from "../../shared/role";
+import {ImageService} from "../../shared/services/image.service";
 
 @Component({
   selector: 'app-product-details',
@@ -15,9 +17,11 @@ export class ProductDetailsComponent implements OnInit {
   @Input() public product: Product = new Product('','','',0,0, null, '');
   public suggestions: Product[] = [];
   public suggestItems = 4;
+  public isAdmin = false;
 
   constructor(private route: ActivatedRoute, private productService: ProductService,
-              private snackbarService: SnackbarService, private userService: UserService) { }
+              private snackbarService: SnackbarService, private userService: UserService, private router: Router,
+              private imageService: ImageService) { }
 
   ngOnInit(): void {
     this.suggestItems = window.innerWidth < 768 ? 3 : 4;
@@ -35,6 +39,14 @@ export class ProductDetailsComponent implements OnInit {
             console.log(err);
           }
         })
+      }
+    });
+
+    this.userService.user.subscribe({
+      next: user => {
+        this.isAdmin = user.role === Role.ADMIN;
+      }, error: err => {
+        console.log(err);
       }
     });
   }
@@ -63,5 +75,16 @@ export class ProductDetailsComponent implements OnInit {
   public addToCart() {
     this.userService.addToCart(this.product);
     this.snackbarService.affirmativeSnackbar(`Added ${this.product.name} to cart`, 'OK');
+  }
+
+  public deleteProduct() {
+    this.productService.deleteProduct(this.route.snapshot.url[1].path).subscribe({
+      next: value => {
+        this.router.navigate(["/shop"]);
+        console.log(value);
+      }, error: err => {
+        console.log(err);
+      }
+    });
   }
 }

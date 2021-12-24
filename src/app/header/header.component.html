@@ -7,6 +7,7 @@
         <li routerLinkActive="active"  routerLink="/shop"><a>Shop</a></li>
         <li routerLinkActive="active" routerLink="/info"><a>About us</a></li>
         <li routerLinkActive="active" routerLink="/contact"><a>Contact us</a></li>
+        <li routerLinkActive="active" routerLink="/admin" *ngIf="loggedIn"><a>Admin</a></li>
         <li id="shopping-cart" routerLinkActive="cart-active" routerLink="/payment"><a><img alt="shopping cart" src="{{'trolley.svg' | path}}" height="50" width="50"></a></li>
       </ul>
     </nav>

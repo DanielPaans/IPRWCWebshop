@@ -3,6 +3,16 @@ import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {catchError, Observable, throwError} from "rxjs";
 import {Product} from "../models/Product";
+import {Category} from "../models/Category";
+
+export interface PostProduct {
+  name: string;
+  description: string;
+  price: number;
+  categories: Category[];
+  amount: number;
+  imagePath: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +32,14 @@ export class ProductService {
 
   public getProduct(id: string): Observable<any> {
     return this.http.get<Product>(this.URL + '/' + id).pipe(catchError(this.handleError));
+  }
+
+  public postProduct(product: PostProduct): Observable<any> {
+    return this.http.post(this.URL, product).pipe(catchError(this.handleError));
+  }
+
+  public deleteProduct(productId): Observable<any> {
+    return this.http.delete(this.URL + '/' + productId).pipe(catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse): Observable<never> {

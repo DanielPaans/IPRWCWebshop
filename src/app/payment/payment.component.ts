@@ -31,7 +31,7 @@ export class PaymentComponent implements OnInit, OnDestroy {
     this.snackbarService.affirmativeSnackbar("Shopping cart cleared", "OK");
   }
 
-  public pay(): void {
+  public checkOut(): void {
 
   }
 

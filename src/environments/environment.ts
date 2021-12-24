@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 const API_PATH = "http://localhost:8080/api";
+const IMAGE_PATH = "http://localhost/save.php";
 export const environment = {
   production: false,
   HTTP_CONFIG: {
@@ -12,8 +13,10 @@ export const environment = {
     USER_PATH: API_PATH + "/user",
     PRODUCT_PATH: API_PATH + "/product",
     REVIEW_PATH: API_PATH + "/review",
-    CATEGORY_PATH: API_PATH + "/category"
-  }
+    CATEGORY_PATH: API_PATH + "/category",
+    IMAGE_PATH: IMAGE_PATH
+  },
+  PATH: "./assets/images/"
 };
 
 /*

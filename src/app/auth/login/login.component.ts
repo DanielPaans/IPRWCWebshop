@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {User} from "../../shared/models/User";
 import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
+import {Role} from "../../shared/role";
 
 @Component({
   selector: 'app-login',
@@ -27,13 +28,11 @@ export class LoginComponent implements OnInit {
 
     authObs.subscribe({
       next: () => {
-        console.log('user retrieved');
-        console.log(this.userService.user.value);
-        if (this.userService.user.value.role === 'ROLE_ADMIN') {
+        if (this.userService.user.value.role === Role.ADMIN) {
           this.router.navigate(['/admin']);
         }
       }, error: err => {
-        console.log(err.error);
+        console.log(err);
         //TODO: error handling
       }
     });

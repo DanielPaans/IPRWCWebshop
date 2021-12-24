@@ -19,6 +19,8 @@
   h2, h3 {
     margin: auto;
     width: 90%;
+    word-wrap: anywhere;
+    overflow: hidden;
   }
 }
 

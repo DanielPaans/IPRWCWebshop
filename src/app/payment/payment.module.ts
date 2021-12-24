@@ -4,11 +4,13 @@ import { ShopModule } from '../shop/shop.module';
 import {PaymentComponent} from "./payment.component";
 import {SharedModule} from "../shared/shared.module";
 import { ShoppingCartItemComponent } from './shopping-cart-item/shopping-cart-item.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 
 @NgModule({
   declarations: [
     PaymentComponent,
-    ShoppingCartItemComponent
+    ShoppingCartItemComponent,
+    CheckOutComponent
   ],
   imports: [
     CommonModule,

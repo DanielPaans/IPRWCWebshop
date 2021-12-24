@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {environment} from "../../../environments/environment";
 
 @Pipe({
   name: 'path'
@@ -6,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PathPipe implements PipeTransform {
 
   transform(value: string, path?: string): string {
-    return path ? path + value : './assets/images/' + value;
+    return path ? path + value : environment.PATH + value;
   }
 
 }

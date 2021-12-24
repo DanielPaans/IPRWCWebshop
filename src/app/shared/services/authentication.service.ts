@@ -3,7 +3,7 @@ import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {User} from "../models/User";
-import {catchError, tap, throwError} from "rxjs";
+import {catchError, Subject, tap, throwError} from "rxjs";
 import {UserService} from "./user.service";
 
 interface AuthResponse {
@@ -15,6 +15,8 @@ interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthenticationService {
+
+  public loggedIn = new Subject();
 
   private AUTH_URL: string = environment.HTTP_CONFIG.AUTH_PATH;
   private USER_URL: string = environment.HTTP_CONFIG.USER_PATH;
@@ -30,6 +32,10 @@ export class AuthenticationService {
   public autoLogin() {
     try {
       this.userService.getStoredUser();
+
+      if (this.userService.user.value.token) {
+          this.loggedIn.next(true);
+      }
     } catch (e) {
       this.userService.storeUser();
     }
@@ -37,11 +43,14 @@ export class AuthenticationService {
 
   public logout() {
     this.userService.removeStoredUser();
+    this.loggedIn.next(false);
     this.router.navigate(['/login']);
   }
 
   public autoLogout() {
     // TODO: handle when token expired response
+
+    this.loggedIn.next(false);
   }
 
   public authenticate(username: string, password: string) {
@@ -66,6 +75,7 @@ export class AuthenticationService {
     user.role = role;
     user.token = token;
     this.userService.updateUser();
+    this.loggedIn.next(true);
   }
 
   private handleError(err: HttpErrorResponse) {

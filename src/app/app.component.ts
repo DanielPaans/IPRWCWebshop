@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "./shared/services/user.service";
 import {AuthenticationService} from "./shared/services/authentication.service";
 
@@ -7,16 +7,14 @@ import {AuthenticationService} from "./shared/services/authentication.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements AfterViewInit {
 
-  constructor(private authenticationService: AuthenticationService) { }
 
-  ngOnInit(): void {
+  constructor(private authenticationService: AuthenticationService, private cd: ChangeDetectorRef) { }
+
+  ngAfterViewInit(): void {
     this.authenticationService.autoLogin();
+    this.cd.detectChanges();
   }
-
-  ngOnDestroy(): void {
-  }
-
 
 }
