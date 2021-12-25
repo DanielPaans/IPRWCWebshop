@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import {Product} from "../models/Product";
-import {User} from "../models/User";
+import {Product} from "../models/product";
+import {User} from "../models/user";
 import {BehaviorSubject, catchError, filter, map, Observable, Subject, take, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Category} from "../models/Category";
+import {Category} from "../models/category";
 import {ProductService} from "./product.service";
 
 @Injectable({
@@ -20,7 +20,7 @@ export class UserService {
   constructor(private http: HttpClient, private productService: ProductService) {
   }
 
-  public updateUser() {
+  public updateUser(): void {
     this.storeUser();
     this.getStoredUser();
   }
@@ -83,26 +83,25 @@ export class UserService {
 
   public clearCart(): void {
     this.user.value.shoppingCart.clear();
-    this.storeUser();
+    this.updateUser();
   }
 
   public addToCart(product: Product): void {
     this.getStoredUser();
     this.user.value.shoppingCart.add(product.id);
-    this.storeUser();
+    this.updateUser();
   }
 
   public removeFromCart(product: Product): void {
     this.getStoredUser();
     this.user.value.shoppingCart.delete(product.id);
-    this.storeUser();
     this.updateUser();
   }
 
   public addToRecentlySearched(product: Product): void {
     this.getStoredUser();
     this.user.value.recentlySearched.add(product.id);
-    this.storeUser();
+    this.updateUser();
   }
 
   public removeStoredUser(): void {
@@ -129,6 +128,7 @@ export class UserService {
       USER.email = userInfo.email;
       USER.token = userInfo.token;
       USER.role = userInfo.role;
+      USER.id = userInfo.id;
     }
 
     this.user.next(USER);
@@ -141,7 +141,8 @@ export class UserService {
       'username': this.user.value.username,
       'email': this.user.value.email,
       'token': this.user.value.token,
-      'role': this.user.value.role
+      'role': this.user.value.role,
+      'id': this.user.value.id
     }));
   }
 }

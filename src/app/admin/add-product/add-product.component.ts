@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {ProductService} from "../../shared/services/product.service";
-import {Product} from "../../shared/models/Product";
-import {Category} from "../../shared/models/Category";
+import {Product} from "../../shared/models/product";
+import {Category} from "../../shared/models/category";
 import {CategoryService} from "../../shared/services/category.service";
 import {ImageService} from "../../shared/services/image.service";
 import {SnackbarService} from "../../shared/services/snackbar.service";
@@ -44,11 +44,11 @@ export class AddProductComponent implements OnInit {
     }
   }
 
-  public onSubmit() {
+  public onSubmit(): void {
     this.addProduct();
   }
 
-  private addProduct() {
+  private addProduct(): void {
     const formValue = this.form.value;
     const categories = [formValue.category];
     const product = { "name": formValue.name,
@@ -69,7 +69,7 @@ export class AddProductComponent implements OnInit {
     });
   }
 
-  private saveImage() {
+  private saveImage(): void {
     this.imageService.uploadImage(this.image);
   }
 

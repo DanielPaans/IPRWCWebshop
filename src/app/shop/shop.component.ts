@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Product} from "../shared/models/Product";
-import {Category} from "../shared/models/Category";
+import {Product} from "../shared/models/product";
+import {Category} from "../shared/models/category";
 import {NgForm} from "@angular/forms";
 import {ProductService} from "../shared/services/product.service";
 import {CategoryService} from "../shared/services/category.service";

@@ -21,16 +21,27 @@ header {
   }
 }
 
-#clear {
-  background-color: $red!important;
-  border-color: $red!important;
-  color: $silver!important;
+#price-block {
+  text-align: right;
 
-  &:hover {
-    background-color: #992a22!important;
+  h2 {
+    display: inline;
+    text-align: right;
   }
 
-  &:focus {
-    box-shadow: 0 0 0 0.1em $yellow !important;
+  #price {
+    display: inline-block;
+    transform: scaleX(0);
+    animation: slide-in-price .5s ease-in forwards;
+    animation-delay: .5s;
+    transform-origin: left;
+  }
+}
+
+
+// Animation
+@keyframes slide-in-price {
+  to {
+    transform: scaleX(1);
   }
 }

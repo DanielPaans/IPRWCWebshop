@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {User} from "../models/User";
+import {User} from "../models/user";
 import {catchError, Subject, tap, throwError} from "rxjs";
 import {UserService} from "./user.service";
 
 interface AuthResponse {
+  id: string;
   role: string;
   jwt: string;
 }
@@ -56,7 +57,7 @@ export class AuthenticationService {
   public authenticate(username: string, password: string) {
     return this.http.post<AuthResponse>(this.AUTH_URL, {username, password})
       .pipe(catchError(this.handleError), tap((response: AuthResponse) => {
-        this.handleAuthentication(response.role, response.jwt);
+        this.handleAuthentication(response.id, response.role, response.jwt);
       }));
   }
 
@@ -70,8 +71,9 @@ export class AuthenticationService {
   //   return this.http.put(this.)
   // }
 
-  private handleAuthentication(role: string, token: string) {
+  private handleAuthentication(id: string, role: string, token: string) {
     const user = this.userService.user.value;
+    user.id = id;
     user.role = role;
     user.token = token;
     this.userService.updateUser();

@@ -1,0 +1,18 @@
+@import "../../shared/variables";
+
+.alert-box {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: $black;
+  color: white;
+  padding: 1rem;
+  border-radius: .5rem;
+  text-align: center;
+
+  button {
+    margin: .5rem;
+  }
+}

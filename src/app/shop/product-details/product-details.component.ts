@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Product} from "../../shared/models/Product";
+import {Product} from "../../shared/models/product";
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {ProductService} from "../../shared/services/product.service";
 import {SnackbarService} from "../../shared/services/snackbar.service";
@@ -65,19 +65,19 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  private setStock() {
+  private setStock(): void {
     const inStock: boolean = this.product.amount > 0;
     const stock: HTMLElement = document.getElementById('stock');
     stock.innerText = inStock ? 'In stock' : 'Out of stock';
     stock.style.setProperty('--background', `${inStock ? 'green' : '#b82418'}`);
   }
 
-  public addToCart() {
+  public addToCart(): void {
     this.userService.addToCart(this.product);
     this.snackbarService.affirmativeSnackbar(`Added ${this.product.name} to cart`, 'OK');
   }
 
-  public deleteProduct() {
+  public deleteProduct(): void {
     this.productService.deleteProduct(this.route.snapshot.url[1].path).subscribe({
       next: value => {
         this.router.navigate(["/shop"]);

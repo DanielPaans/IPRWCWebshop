@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from "../shared/services/product.service";
 import {CategoryService} from "../shared/services/category.service";
 import {Subscription} from "rxjs";
-import {Product} from "../shared/models/Product";
+import {Product} from "../shared/models/product";
 import {UserService} from "../shared/services/user.service";
 
 @Component({

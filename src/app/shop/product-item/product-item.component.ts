@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {Product} from "../../shared/models/Product";
+import {Product} from "../../shared/models/product";
 
 interface RGB {
   r: number;

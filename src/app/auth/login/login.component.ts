@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthenticationService} from "../../shared/services/authentication.service";
 import {NgForm} from "@angular/forms";
 import {Observable} from "rxjs";
-import {User} from "../../shared/models/User";
+import {User} from "../../shared/models/user";
 import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
 import {Role} from "../../shared/role";

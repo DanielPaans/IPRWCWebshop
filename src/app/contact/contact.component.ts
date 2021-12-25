@@ -17,7 +17,7 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onSubmit() {
+  public onSubmit(): void {
     //Todo: send email
     this.snackbarService.affirmativeSnackbar('Email send', 'OK');
     this.form.reset();

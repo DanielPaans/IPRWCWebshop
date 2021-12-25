@@ -12,7 +12,7 @@ export const environment = {
     AUTH_PATH: API_PATH + "/authenticate",
     USER_PATH: API_PATH + "/user",
     PRODUCT_PATH: API_PATH + "/product",
-    REVIEW_PATH: API_PATH + "/review",
+    ORDER_PATH: API_PATH + "/order",
     CATEGORY_PATH: API_PATH + "/category",
     IMAGE_PATH: IMAGE_PATH
   },

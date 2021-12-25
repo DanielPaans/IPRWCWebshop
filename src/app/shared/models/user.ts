@@ -1,4 +1,4 @@
-import {Product} from "./Product";
+import {Product} from "./product";
 
 export class User {
 
@@ -8,16 +8,17 @@ export class User {
   private _role: string;
   private _email: string;
   private _token: string;
-
+  private _id: string;
 
   constructor(recentlySearched: Set<string> = new Set<string>(), shoppingCart: Set<string> = new Set<string>(),
-              username?: string, role?: string, email?: string, token?: string) {
+              username?: string, role?: string, email?: string, token?: string, id?: string) {
     this._recentlySearched = recentlySearched;
     this._shoppingCart = shoppingCart;
     this._username = username;
     this._role = role;
     this._email = email;
     this._token = token;
+    this._id = id;
   }
 
 
@@ -67,5 +68,13 @@ export class User {
 
   set token(value: string) {
     this._token = value;
+  }
+
+  get id(): string {
+    return this._id;
+  }
+
+  set id(value: string) {
+    this._id = value;
   }
 }

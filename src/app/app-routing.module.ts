@@ -10,6 +10,7 @@ import {ProductDetailsComponent} from "./shop/product-details/product-details.co
 import {AdminComponent} from "./admin/admin.component";
 import {AuthGuard} from "./auth/auth.guard";
 import {LoginComponent} from "./auth/login/login.component";
+import {SignupComponent} from "./auth/signup/signup.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'payment', component: PaymentComponent, children: []},
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: []},
   {path: 'login', component: LoginComponent, children: []},
+  {path: 'signup', component: SignupComponent, children: []},
   {path: 'not-found', component: ErrorPageComponent, data: {message: 'Pagina niet gevonden'}},
   {path: 'server-error', component: ErrorPageComponent, data: {message: 'Er is iets misgegaan met de server'}},
   {path: 'unauthorized', component: ErrorPageComponent, data: {message: 'Je bent hier niet toegestaan'}},

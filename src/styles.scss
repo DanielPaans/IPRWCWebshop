@@ -96,15 +96,29 @@ html, body {
   &:focus {
     box-shadow: 0 0 0 0.1em $red !important;
   }
+
+  &:hover {
+    background-color: #f88913 !important;
+  }
+
+  &:disabled {
+    background-color: rgba(248, 183, 19, 0.91) !important;
+    cursor: not-allowed;
+  }
 }
 
-.btn:hover {
-  background-color: #f88913 !important;
-}
+.red-btn {
+  background-color: $red!important;
+  border-color: $red!important;
+  color: $silver!important;
 
-.btn:disabled {
-  background-color: rgba(248, 183, 19, 0.91) !important;
-  cursor: not-allowed;
+  &:hover {
+    background-color: #992a22!important;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.1em $yellow !important;
+  }
 }
 
 .snack-affirmative{

@@ -1,13 +1,20 @@
 <div class="container">
-  <header *ngIf="shoppingCart.length > 0">
-    <h1 class="title">Products to buy</h1>
-    <div class="btn-group">
-      <button class="btn">Check Out</button>
-      <button id="clear" class="btn" (click)="clearCart()">Clear Cart</button>
+  <div *ngIf="shoppingCart.length > 0">
+    <header>
+      <h1 class="title">Products to buy</h1>
+      <div class="btn-group">
+        <button class="btn" (click)="checkOut()">Check Out</button>
+        <button class="btn red-btn" (click)="clearCart()">Clear Cart</button>
+      </div>
+    </header>
+    <ul id="product-list">
+      <li *ngFor="let item of shoppingCart"><app-shopping-cart-item [item]="item"></app-shopping-cart-item></li>
+    </ul>
+    <div id="price-block">
+      <h2>Total price: </h2>
+      <h2 id="price">{{totalPrice | price}}</h2>
     </div>
-  </header>
-  <ul id="product-list" *ngIf="shoppingCart.length > 0">
-    <li *ngFor="let item of shoppingCart"><app-shopping-cart-item [item]="item"></app-shopping-cart-item></li>
-  </ul>
+  </div>
   <h2 class="title" *ngIf="shoppingCart.length === 0">Shopping cart is empty, go to <a routerLink="/shop">shop</a> to order.</h2>
+  <app-auth-alert *ngIf="loggingIn" (close)="stopLoggingIn()"></app-auth-alert>
 </div>

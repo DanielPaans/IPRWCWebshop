@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpParams} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {BehaviorSubject, catchError, Observable, Subject, throwError} from "rxjs";
-import {Product} from "../models/Product";
-import {Category} from "../models/Category";
+import {Product} from "../models/product";
+import {Category} from "../models/category";
 
 export interface PostProduct {
   name: string;
