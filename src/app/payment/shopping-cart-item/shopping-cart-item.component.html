@@ -1,10 +1,14 @@
 <div id="item">
   <img alt="{{item.name}}" src="{{item.imagePath | path}}">
+  <div id="title-price-container">
+    <h2>{{item.name | titlecase}}</h2>
+    <h3>{{item.price | price}}</h3>
+  </div>
   <h2>{{item.name | titlecase}}</h2>
   <h3>{{item.price | price}}</h3>
   <div id="options">
     <label>amount</label>
     <input type="number" value="1" min="1" max="{{item.amount}}" (change)="setAmount($event)">
-    <button class="btn" (click)="deleteItem()">Remove item</button>
+    <a (click)="deleteItem()"><img alt="remove item" src="{{'garbage.svg' | path}}"></a>
   </div>
 </div>

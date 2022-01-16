@@ -56,6 +56,9 @@ ul {
   height: 50px;
 }
 
+.cart {
+  content: url($image-path + "trolley.svg");
+}
 #shopping-cart:hover, .cart-active {
   animation: none;
   cursor: pointer;
@@ -72,11 +75,21 @@ ul {
 
 @media #{$media-mobile} {
   #shopping-cart {
-    width: 50%;
+    width: 55%;
+    margin-top: 1.2rem;
+    margin-bottom: -8px;
+
+    .cart-active {
+      animation: ride-away ease-out 1.5s;
+    }
   }
-  .cart-active {
-    animation: ride-away ease-out 1.5s;
+
+  #about-us {
+    display: none;
   }
+
+
+
   h1 {
     width: 100%;
     text-align: center;

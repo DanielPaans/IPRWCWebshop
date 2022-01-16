@@ -1,8 +1,39 @@
 <div class="container">
+  <h1 class="title">Sign Up</h1>
   <form (ngSubmit)="signIn()" #f=ngForm>
-    <div class="form-group">
-      <label></label>
-      <input class="form-control" type="text">
-    </div>
+    <section>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" name="email" class="form-control" type="email" required ngModel email>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input id="username" name="username" class="form-control" type="text" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" name="password" class="form-control" type="password" minlength="6" required ngModel #password>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" name="confirmPassword" class="form-control" type="password" minlength="6" required ngModel appPasswordValidator="password">
+      </div>
+    </section>
+
+    <aside>
+      <div class="form-group">
+        <label for="postalCode">Postal Code</label>
+        <input id="postalCode" name="postalCode" class="form-control" type="text" minlength="6" maxLength="6" required ngModel>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input id="city" name="city" class="form-control" type="text" required ngModel>
+      </div>
+
+      <div id="button-group">
+        <button class="btn" type="submit" [disabled]="f.invalid">Signup</button>
+        <button class="btn red-btn" type="button" (click)="cancel()">Cancel</button>
+      </div>
+    </aside>
   </form>
 </div>

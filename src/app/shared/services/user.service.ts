@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Product} from "../models/product";
 import {User} from "../models/user";
-import {BehaviorSubject, catchError, filter, map, Observable, Subject, take, throwError} from "rxjs";
+import {BehaviorSubject, catchError, filter, map, Observable, Subject, take, tap, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Category} from "../models/category";
 import {ProductService} from "./product.service";
+import {Md5} from "ts-md5";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,22 @@ export class UserService {
   private URL = environment.HTTP_CONFIG.USER_PATH;
 
   constructor(private http: HttpClient, private productService: ProductService) {
+  }
+
+  public addUser(user: User, password: string): Observable<any> {
+    const body = {email: user.email, username: user.username, password: password,
+                  postalCode: user.postalCode, city: user.city};
+    return this.http.post(this.URL, body).pipe(catchError(this.handleError), tap(user => {
+      console.log('in tap')
+      const USER = this.user.value;
+      USER.id = user.id;
+      USER.username = user.username;
+      USER.email = user.email;
+      USER.postalCode = user.postalCode;
+      USER.email = user.email;
+      this.updateUser();
+      console.log('user updated')
+    }));
   }
 
   public updateUser(): void {
@@ -75,12 +92,6 @@ export class UserService {
     });
   }
 
-
-  private handleError(err: HttpErrorResponse): Observable<never> {
-    //TODO: error handling
-    return throwError(() => err.error);
-  }
-
   public clearCart(): void {
     this.user.value.shoppingCart.clear();
     this.updateUser();
@@ -127,8 +138,11 @@ export class UserService {
       USER.username = userInfo.username;
       USER.email = userInfo.email;
       USER.token = userInfo.token;
+      USER.expiresAt = userInfo.expiresAt;
       USER.role = userInfo.role;
       USER.id = userInfo.id;
+      USER.postalCode = userInfo.postalCode;
+      USER.city = userInfo.city;
     }
 
     this.user.next(USER);
@@ -141,8 +155,21 @@ export class UserService {
       'username': this.user.value.username,
       'email': this.user.value.email,
       'token': this.user.value.token,
+      'expiresAt': this.user.value.expiresAt,
       'role': this.user.value.role,
-      'id': this.user.value.id
+      'id': this.user.value.id,
+      'postalCode': this.user.value.postalCode,
+      'city': this.user.value.city
     }));
+  }
+
+  private handleError(err: HttpErrorResponse): Observable<never> {
+    let errorMessage = "Something went wrong";
+    switch (err.error.error) {
+      case 'Username already in use':
+        errorMessage = "User with this username already exists, try a different username";
+        break;
+    }
+    return throwError(() => errorMessage);
   }
 }

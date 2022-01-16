@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from "../shared/services/product.service";
 import {CategoryService} from "../shared/services/category.service";
 import {Subscription} from "rxjs";
@@ -10,21 +10,23 @@ import {UserService} from "../shared/services/user.service";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public products: Product[] = [];
   public randomCategoryName = '';
   public recentlySearched: Product[] = [];
   public columns = 3;
+  public isMobile = false;
+  public username;
 
   private maxAmount = 6;
   private categorySub: Subscription;
   constructor(private productService: ProductService, private categoryService: CategoryService, private userService: UserService) { }
 
+
   ngOnInit(): void {
     this.recentlySearched = this.userService.getRecentlySearched(this.maxAmount);
-
-    this.columns = window.innerWidth < 768 ? 2 : 3;
+    this.username = this.userService.user.value.username;
 
     this.categorySub = this.categoryService.categoriesObs.subscribe({
       next: categories => {
@@ -33,6 +35,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     });
     this.categoryService.getCategories();
+  }
+
+  ngAfterViewInit(): void {
+    this.isMobile = window.screen.width <= 600;
+    this.columns = window.innerWidth < 768 ? 2 : 3;
   }
 
   public getProducts(category: string): void {

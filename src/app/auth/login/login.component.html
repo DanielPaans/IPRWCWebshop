@@ -1,17 +1,14 @@
 <div class="container">
   <div class="col-xs-12">
-    <form class="center-block comp" (ngSubmit)="login()" #f="ngForm">
-      <h2>Login</h2>
+    <form class="center-block" (ngSubmit)="login()" #f="ngForm">
+      <h1 class="title">Login</h1>
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" id="username" class="form-control" ngModel name="username" required>
         <label for="password">Password</label>
         <input type="password" id="password" class="form-control" ngModel name="password" required>
+        <button class="btn" type="submit" [disabled]="f.invalid">Login</button>
       </div>
-<!--      <p class="alert alert-danger" *ngIf="error != null">-->
-<!--        {{error}}-->
-<!--      </p>-->
-      <button class="btn" type="submit" [disabled]="f.invalid">Login</button>
     </form>
   </div>
 </div>

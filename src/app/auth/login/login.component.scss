@@ -1,0 +1,67 @@
+@import "../../shared/variables";
+
+form {
+  width: 50%;
+  margin: 3rem auto auto;
+
+  div {
+    background-color: $black;
+    color: $silver;
+    padding: 1rem;
+    border-radius: .5rem;
+  }
+
+  label {
+    font-size: 1.5rem;
+  }
+
+  input {
+    margin-bottom: 2rem;
+  }
+
+  button {
+    display: grid;
+    align-items: center;
+    margin: auto;
+    padding: .8rem 2rem;
+  }
+
+}
+
+@media #{$media-tablet} {
+  form {
+    width: 90%;
+
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@media #{$media-mobile} {
+  form {
+    width: 100%;
+
+    div {
+      background-color: transparent;
+      color: initial;
+      padding: 0;
+    }
+
+    label {
+      font-size: 1.3rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+      padding-bottom: 0;
+      border-bottom: 0.2em solid $red;
+      width: 90%;
+    }
+
+    form {
+      width: 80%;
+    }
+  }
+}

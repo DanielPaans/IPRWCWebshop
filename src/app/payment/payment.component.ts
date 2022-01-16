@@ -3,7 +3,6 @@ import {Product} from "../shared/models/product";
 import {UserService} from "../shared/services/user.service";
 import {Subscription} from "rxjs";
 import {SnackbarService} from "../shared/services/snackbar.service";
-import {Router} from "@angular/router";
 import {OrderService} from "../shared/services/order.service";
 import {ShoppingCartItemComponent} from "./shopping-cart-item/shopping-cart-item.component";
 import {Order} from "../shared/models/order";

@@ -31,6 +31,6 @@
       <input id="image" name="image" class="form-control" type="file" accept="image/*" required (change)="checkFile($event)" ngModel>
     </div>
     <button class="btn" type="submit" [disabled]="f.invalid">Add Product</button>
-    <button class="btn" type="button" (click)="cancel()">Clear</button>
+    <button class="btn red-btn" type="button" (click)="cancel()">Clear</button>
   </form>
 </div>

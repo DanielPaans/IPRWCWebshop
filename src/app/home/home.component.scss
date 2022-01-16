@@ -6,6 +6,16 @@
   height: 60vh;
   background: white url("../../assets/images/guitar.jpg") no-repeat center center fixed;
   background-size: cover;
+
+  h1 {
+    position: absolute;
+    color: white;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+  }
 }
 
 @media #{$media-mobile} {

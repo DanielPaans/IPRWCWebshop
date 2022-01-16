@@ -23,6 +23,7 @@ header {
 
 #price-block {
   text-align: right;
+  background-color: transparent;
 
   h2 {
     display: inline;
@@ -32,15 +33,30 @@ header {
   #price {
     display: inline-block;
     transform: scaleX(0);
-    animation: slide-in-price .5s ease-in forwards;
+    animation: slide-in-price-pay .5s ease-in forwards;
     animation-delay: .5s;
     transform-origin: left;
   }
 }
 
+// Responsiveness
+@media #{$media-tablet} {
+  .container {
+    min-width: 90%;
+  }
+
+  header {
+    flex-direction: column;
+    margin-bottom: .5rem;
+  };
+
+  #product-list {
+    padding: 0;
+  }
+}
 
 // Animation
-@keyframes slide-in-price {
+@keyframes slide-in-price-pay {
   to {
     transform: scaleX(1);
   }
