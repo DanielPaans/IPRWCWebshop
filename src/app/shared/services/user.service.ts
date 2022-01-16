@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Product} from "../models/product";
 import {User} from "../models/user";
-import {BehaviorSubject, catchError, filter, map, Observable, Subject, take, tap, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
-import {Category} from "../models/category";
 import {ProductService} from "./product.service";
-import {Md5} from "ts-md5";
 
 @Injectable({
   providedIn: 'root'
