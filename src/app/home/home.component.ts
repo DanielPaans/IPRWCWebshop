@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from "../shared/services/product.service";
 import {CategoryService} from "../shared/services/category.service";
 import {Subscription} from "rxjs";
@@ -10,7 +10,7 @@ import {UserService} from "../shared/services/user.service";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
+export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
 
   public products: Product[] = [];
   public randomCategoryName = '';
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.categoryService.getCategories();
   }
 
-  ngAfterViewInit(): void {
+  ngAfterContentInit(): void {
     this.isMobile = window.screen.width <= 600;
     this.columns = window.innerWidth < 768 ? 2 : 3;
   }

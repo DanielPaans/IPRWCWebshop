@@ -1,1 +1,20 @@
-<p>error-page works!</p>
+<h1 class="container" style="text-align: center;">{{errorCode + ' ' + errorMessage}}</h1>
+<div *ngIf="errorCode === 404" class="container">
+  <p>Try:</p>
+  <ul>
+    <li>/home</li>
+    <li>/shop</li>
+    <li>/contact</li>
+    <li>/payment</li>
+    <li>/info</li>
+  </ul>
+</div>
+<div *ngIf="errorCode === 500" class="container">
+  <p>A servererror occurred, please consider <a routerLink="/contact">contacting us</a> and try it again later.</p>
+</div>
+<div *ngIf="errorCode === 403" class="container">
+  <p>If you are authorized, you might have used the wrong credentials</p>
+</div>
+<figure>
+  <img style="width: 100%" alt="broken guitar" src="{{'broken-guitar.svg' | path}}">
+</figure>

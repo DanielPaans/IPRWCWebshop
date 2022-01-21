@@ -1,6 +1,6 @@
 <div id="home-img">
   <div class="overlay"></div>
-  <h1>Welcome back {{username}}</h1>
+  <h1 *ngIf="username">Welcome back {{username}}</h1>
 </div>
 <div id="home-products">
   <div *ngIf="!recentlySearched">

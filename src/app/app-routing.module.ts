@@ -23,9 +23,9 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: []},
   {path: 'login', component: LoginComponent, children: []},
   {path: 'signup', component: SignupComponent, children: []},
-  {path: 'not-found', component: ErrorPageComponent, data: {message: 'Pagina niet gevonden'}},
-  {path: 'server-error', component: ErrorPageComponent, data: {message: 'Er is iets misgegaan met de server'}},
-  {path: 'unauthorized', component: ErrorPageComponent, data: {message: 'Je bent hier niet toegestaan'}},
+  {path: 'not-found', component: ErrorPageComponent, data: {message: 'Page not found', code: 404}},
+  {path: 'server-error', component: ErrorPageComponent, data: {message: 'Something went wrong on the server', code: 500}},
+  {path: 'unauthorized', component: ErrorPageComponent, data: {message: 'You are not allowed here', code: 403}},
   {path: '**', redirectTo: '/not-found', pathMatch: 'full'}];
 
 @NgModule({

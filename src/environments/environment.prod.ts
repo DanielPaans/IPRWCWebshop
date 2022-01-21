@@ -1,4 +1,4 @@
-const API_PATH = "http://localhost:8080/api";
+const API_PATH = "https://rockingman.nl:8443/api";
 const IMAGE_PATH = "http://localhost/save.php";
 export const environment = {
   production: true,

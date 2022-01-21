@@ -6,7 +6,7 @@
       <h3>Price: &euro;{{product.price | price}}</h3>
       <h3 id="stock"></h3>
     </div>
-    <p>{{product.description}} p;olikujhg fdfrgthukl,jhmngbfv dewr4t5yu jkhmngbfvd retyujkh,mbn vgfvdser jydhrjhtw eesh tsrh sfhts rger shtsrh tsrh shg gxfh sth srh trsh trs htrs hgngxfvbb grhsrrrrrbfgrteshynfgbd nmjfyrtszdkrsm nj</p>
+    <p>{{product.description}}</p>
     <button class="btn" (click)="addToCart()" [disabled]="product.amount <= 0">Add to cart</button>
     <button class="btn red-btn" (click)="deleteProduct()" *ngIf="isAdmin">Delete product</button>
   </div>

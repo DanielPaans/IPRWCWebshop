@@ -68,7 +68,7 @@ export class AuthenticationService {
 
     username = shajs('sha256').update({username}).digest('hex');
     password = shajs('sha256').update({password}).digest('hex');
-
+    console.log(username, password)
     return this.http.post<AuthResponse>(this.AUTH_URL, {username, password})
       .pipe(catchError(this.handleError), tap((response: AuthResponse) => {
         this.handleAuthentication(response.id, response.role, response.jwt, response.expiresAt);
